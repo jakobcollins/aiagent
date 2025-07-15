@@ -3,6 +3,7 @@ import sys
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from config import SYSTEM_PROMPT, MODEL
 
 load_dotenv()
 api_key = os.environ.get("GEMINI_API_KEY")
@@ -26,8 +27,9 @@ if len(sys.argv) < 2:
     sys.exit(1)
 elif len(sys.argv) >= 2:
     response = client.models.generate_content(
-            model="gemini-2.0-flash-001", 
+            model=MODEL, 
             contents=messages,
+            config=types.GenerateContentConfig(system_instruction=SYSTEM_PROMPT),
         )
     if len(sys.argv) > 2 and sys.argv[2] == "--verbose":
          print(response.text)
