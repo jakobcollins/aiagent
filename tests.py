@@ -1,8 +1,8 @@
 import os
 # from subdirectory.filename import function_name
 from functions.get_files_info import get_files_info
+from functions.get_file_content import get_file_content
 
-print(f"Result for current directory: {get_files_info('calculator', '.')}")
-print(f"Result for 'pkg' directory: {get_files_info('calculator', 'pkg')}")
-print(f"Result for '/bin' directory: {get_files_info('calculator', '/bin')}")
-print(f"Result for '../' directory: {get_files_info('calculator', '../')}")
+print(get_file_content("calculator", "main.py"))
+print(get_file_content("calculator", "pkg/calculator.py"))
+print(get_file_content("calculator", "/bin/cat"))
