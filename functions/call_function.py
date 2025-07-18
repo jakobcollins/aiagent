@@ -21,7 +21,7 @@ def call_function(function_call_part, verbose=False):
     func = function_map.get(function_call_part.name)
     if not func:
         return types.Content(
-            role="tool",
+            role="model",
             parts=[
                 types.Part.from_function_response(
                     name=function_call_part.name,
@@ -34,7 +34,7 @@ def call_function(function_call_part, verbose=False):
         some_args["working_directory"] = "./calculator"
     function_result = func(**some_args)
     return types.Content(
-        role="tool",
+        role="model",
         parts=[
             types.Part.from_function_response(
                 name=function_call_part.name,
